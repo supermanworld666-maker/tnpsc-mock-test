@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #0b1120; 
+    background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+    color: #f1f5f9;
+    min-height: 100vh;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.glass-container {
+    width: 100%; max-width: 800px; padding: 30px;
+    background: rgba(15, 23, 42, 0.7); 
+    backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    position: relative; overflow: hidden;
+}
+
+.hidden { display: none !important; }
+
+/* Interactive Mouse Glow */
+.glass-container::before {
+    content: ""; position: absolute;
+    top: var(--mouse-y, 0); left: var(--mouse-x, 0);
+    width: 350px; height: 350px;
+    background: radial-gradient(circle, rgba(56, 189, 248, 0.1) 0%, transparent 70%);
+    transform: translate(-50%, -50%); pointer-events: none;
+}
+
+header { text-align: center; border-bottom: 1px solid rgba(255, 255, 255, 0.1); margin-bottom: 20px; padding-bottom: 10px; }
+
+.glass-btn {
+    width: 100%; padding: 14px; margin-bottom: 10px; border-radius: 10px;
+    color: #fff; cursor: pointer; transition: 0.3s;
+    background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-btn:hover { background: rgba(255, 255, 255, 0.15); transform: translateY(-2px); }
+.glass-btn.primary { background: rgba(14, 165, 233, 0.3); border-color: #0ea5e9; }
+.glass-btn.success { background: rgba(34, 197, 94, 0.3); border-color: #22c55e; }
+.glass-btn.danger { background: rgba(239, 68, 68, 0.2); border-color: #ef4444; }
+
+.test-card {
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(255, 255, 255, 0.03); padding: 12px; border-radius: 12px; margin-bottom: 12px;
+}
+
+.glass-input {
+    width: 100%; padding: 12px; margin-bottom: 10px; background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; color: #fff;
+}
+
+.option-label {
+    display: block; background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 15px; margin-bottom: 8px; border-radius: 10px; cursor: pointer;
+}
+
+.timer-display { font-size: 18px; font-weight: bold; color: #fb7185; background: rgba(0,0,0,0.4); padding: 5px 12px; border-radius: 6px; }
+
+.upload-box {
+    border: 2px dashed rgba(14, 165, 233, 0.3); border-radius: 15px; padding: 25px;
+    text-align: center; background: rgba(255, 255, 255, 0.01); margin-top: 20px;
+}

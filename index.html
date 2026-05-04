@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TNPSC Premium Portal</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Library for PDF Generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+
+    <!-- HOME PAGE -->
+    <div id="home-page" class="glass-container active">
+        <header>
+            <h1>TNPSC Portal</h1>
+            <p>Cloud-Synced Mock Exams</p>
+        </header>
+        
+        <div id="exam-list">
+            <h3 style="text-align: center; opacity: 0.6;">Syncing with Cloud...</h3>
+        </div>
+
+        <div class="admin-section">
+            <h3>Admin Tools</h3>
+            <button class="glass-btn secondary" onclick="showPage('creator-page')">✍️ Create Manual Test</button>
+            
+            <div class="upload-box" id="drop-zone">
+                <p style="font-size: 18px; margin-bottom: 5px;">📂 Drag & Drop JSON Data</p>
+                <input type="file" id="json-upload" accept=".json" style="display: none;" onchange="handleJSONUpload(event)">
+                <button class="glass-btn primary" style="width: 60%; margin: 0 auto;" onclick="document.getElementById('json-upload').click()">Browse Files</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- TEST CREATOR PAGE -->
+    <div id="creator-page" class="glass-container hidden">
+        <header><h2>Create New Test</h2></header>
+        <input type="text" id="new-test-name" class="glass-input" placeholder="Test Name (e.g., TNPSC Group 2)">
+        
+        <div id="creator-questions-area"></div>
+
+        <button class="glass-btn primary" onclick="addQuestionCreatorBox()">➕ Add Question</button>
+        <button class="glass-btn success" id="save-btn" onclick="saveCustomTest()">💾 Publish to Cloud</button>
+        <button class="glass-btn danger" onclick="showPage('home-page')">Cancel</button>
+    </div>
+
+    <!-- QUIZ PAGE -->
+    <div id="quiz-page" class="glass-container hidden">
+        <header style="display: flex; justify-content: space-between; align-items: center;">
+            <h2 id="current-exam-title">Exam</h2>
+            <div id="timer" class="timer-display">03:00:00</div>
+        </header>
+        <main id="quiz-area"></main>
+        <button class="glass-btn success" onclick="submitTest()">Submit Test</button>
+    </div>
+
+    <!-- RESULTS PAGE -->
+    <div id="result-page" class="glass-container hidden">
+        <header>
+            <h2>Results</h2>
+            <p id="score-text" class="score-highlight"></p>
+        </header>
+        <div id="review-area" class="review-section"></div>
+        <button class="glass-btn success" onclick="downloadResults()">⬇️ Download PDF Report</button>
+        <button class="glass-btn primary" onclick="returnHome()">Back to Home</button>
+    </div>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>
